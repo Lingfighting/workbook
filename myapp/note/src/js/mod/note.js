@@ -67,7 +67,7 @@ Note.prototype = {
 
   getTime: function(){
     var nowTime = new Date();
-    console.log(nowTime);
+    // console.log(nowTime);
     var timeStr = '' + nowTime.getFullYear() + '-' + nowTime.getMonth() + '-' + nowTime.getDate()
                     + ' ' + nowTime.getHours() + ':';
     var m = nowTime.getMinutes() > 9 ? nowTime.getMinutes(): ('0' + nowTime.getMinutes());  

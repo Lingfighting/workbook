@@ -35,12 +35,13 @@ var Note = sequelize.define('note', {
 // Note.drop();
 // Note.sync({force: true})
 // force: true will drop the table if it already exists
-Note.sync({force: true}).then(function () {
-  // Table created
-  return Note.create({
-    text: '<p>1.存在便利贴为黄色</p><p>2.添加便利贴为蓝色</p><p>3.新建便利贴为绿色</p>'
-  });
-});
+//第一次创建数据库需要，后面屏蔽不需要
+// Note.sync({force: true}).then(function () {
+//   // Table created
+//   return Note.create({
+//     text: '<p>1.存在便利贴为黄色</p><p>2.添加便利贴为蓝色</p><p>3.新建便利贴为绿色</p>'
+//   });
+// });
 
 Note.create({
   text: 'haha'
