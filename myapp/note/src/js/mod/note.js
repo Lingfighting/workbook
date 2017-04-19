@@ -21,7 +21,7 @@ Note.prototype = {
   },
 
   initOpts: function (opts) {
-    console.log('initOpts-------------');
+
     this.opts = $.extend({}, this.defaultOpts, opts||{});
     if(this.opts.id){
        this.id = this.opts.id;
@@ -29,19 +29,18 @@ Note.prototype = {
   },
 
   createNote: function () {
-    console.log('createNote-------------');
+
     var tpl =  '<div class="note">'
               + '<div class="note-head"><span class="time"></span><span class="delete">×</span></div>'
               + '<div class="note-ct" contenteditable="true"></div>'
               +'</div>';
-    console.log('createNote-------------1');
+
     var createTime = this.getTime();
-    console.log('createNote-------------2');
     this.$note = $(tpl);
     this.$note.find('.note-head .time').html(createTime);
     this.$note.find('.note-ct').html(this.opts.context);
     this.opts.$ct.append(this.$note);
-    console.log(this.id,'createNote-------------2');
+
     if (!this.id){
       this.$note.css('top', '20px');  //新增放到右边
       this.setStyle(0);
@@ -50,7 +49,7 @@ Note.prototype = {
   },
 
   setStyle: function(opt) {
-    console.log('setStyle-------------');
+
     var color = this.colors[opt];
     this.$note.find('.note-head').css('background-color', color[0]);
     this.$note.find('.note-ct').css('background-color', color[1]);
@@ -97,7 +96,7 @@ Note.prototype = {
       if( $noteCt.data('before') != $noteCt.html() ) {
         $noteCt.data('before',$noteCt.html());
         self.setLayout();
-        console.log("focus---111111", self.id);
+
         if(self.id){
           self.edit($noteCt.html());
         }else{
@@ -125,7 +124,7 @@ Note.prototype = {
   },
 
   edit: function (msg) {
-    console.log('edit.......');
+
     var self = this;
     $.post('/api/notes/edit',{
         id: this.id,
@@ -140,12 +139,11 @@ Note.prototype = {
   },
 
   add: function (msg){
-    console.log('addd.......');
+
     var self = this;
     $.post('/api/notes/add', {note: msg})
       .done(function(ret){
         if(ret.status === 0){
-          console.log("ret.id----add", ret.id);
           self.id = ret.id;
           Tips('add success');
         }else{
@@ -155,11 +153,9 @@ Note.prototype = {
         }
       });
     //todo
-    console.log("this.id----add", self.id);
   },
 
   delete: function(){
-    console.log('delete.......');
     var self = this;
     $.post('/api/notes/delete', {id: this.id})
       .done(function(ret){

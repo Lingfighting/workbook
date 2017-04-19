@@ -29,7 +29,6 @@ var NoteManager = (function(){
   }
 
   function add(){
-    console.log("note-m add------------------");
     new Note();
   }
 

@@ -24,13 +24,12 @@ router.post('/notes/add', function(req, res, next){
   if(!req.session || !req.session.user){
     return res.send({status: 1, errorMsg: '请先登录'})
   }
-  console.log('note add--------------1');
+
   console.log(req.body.note);
   console.log(req.body);
   // console.log(req.session.user.id);
-  console.log('note add--------------2');
+
   if (!req.body.note) {
-    console.log('note add--------------3');
     return res.send({status: 2, errorMsg: '内容不能为空'});
   }
   var note = req.body.note;
@@ -40,7 +39,7 @@ router.post('/notes/add', function(req, res, next){
   // console.log(uid);
   Note.create({text: note, uid: uid}).then(function(){
     // console.log(arguments, '--------');
-    console.log(arguments[0].dataValues.id, '--------');
+    // console.log(arguments[0].dataValues.id, '--------');
     res.send({status: 0, id: arguments[0].dataValues.id});
   }).catch(function(){
     res.send({ status: 1,errorMsg: '数据库异常或者你没有权限'});
