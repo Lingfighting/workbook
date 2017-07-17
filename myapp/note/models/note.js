@@ -54,7 +54,7 @@ Note.destroy({where:{text:'haha'}}, function(){
   console.log(arguments)
 })
 Note.findAll({raw: true}).then(function(articles) {
-  // console.log(articles)
+  console.log(articles)
 })
 
 module.exports = Note;
