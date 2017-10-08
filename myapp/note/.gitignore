@@ -39,3 +39,8 @@ jspm_packages
 
 #database file
 database/database.sqlite
+
+# webstorm configuration
+.idea
+
+.DS_Store
